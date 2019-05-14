@@ -8,11 +8,10 @@ function loginForm(req, res) {
 function loginVerify(req, res) {
 }
 
-function create(req, res) {
-  console.log("till here");
+async function create(req, res) {
   // res.json(req.body);
-  // const { email, password } = req.body;
-  const user = UserModel.create(req.body);
+  const user = await UserModel.create(req.body);
+  console.log("user", user);
   req.session.user = user;
   res.redirect("/dashboard");
 }
